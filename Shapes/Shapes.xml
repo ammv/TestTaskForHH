@@ -1,0 +1,125 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Shapes</name>
+    </assembly>
+    <members>
+        <member name="T:Shapes.Base.Shape">
+            <summary>
+            Represents the base class for shapes
+            </summary>
+        </member>
+        <member name="M:Shapes.Base.Shape.GetArea">
+            <summary>
+            Calculates the area of the shape
+            </summary>
+            <returns>The area of the shape</returns>
+        </member>
+        <member name="T:Shapes.CircleException">
+            <summary>
+            Class for exceptions related to the <see cref="T:Shapes.Circle"/> class
+            </summary>
+        </member>
+        <member name="M:Shapes.CircleException.#ctor(System.String)">
+            <summary>
+            Initializes the new instance of the <see cref="T:Shapes.CircleException"/> with a specified error message
+            </summary>
+            <param name="message">Error message</param>
+        </member>
+        <member name="T:Shapes.Circle">
+            <summary>
+            Represents a class for creating circles
+            </summary>
+        </member>
+        <member name="P:Shapes.Circle.Radius">
+            <summary>
+            Circle radius
+            </summary>
+        </member>
+        <member name="M:Shapes.Circle.#ctor(System.Double)">
+            <summary>
+            Creates a circle through the radius
+            </summary>
+            <param name="radius">Circle radius</param>
+            /// <exception cref="T:Shapes.CircleException">The radius is less than or equal to 0</exception>
+        </member>
+        <member name="M:Shapes.Circle.GetArea">
+            <summary>
+            Calculates the area of a circle through its radius using the formula: pi*r^2
+            </summary>
+            <returns>The area of the circle</returns>
+        </member>
+        <member name="T:Shapes.TriangleException">
+            <summary>
+            Class for exceptions related to the <see cref="T:Shapes.Triangle"/> class
+            </summary>
+        </member>
+        <member name="M:Shapes.TriangleException.#ctor(System.String)">
+            <summary>
+            Initializes the new instance of the <see cref="T:Shapes.TriangleException"/> with a specified error message
+            </summary>
+            <param name="message">Error message</param>
+        </member>
+        <member name="T:Shapes.Triangle">
+            <summary>
+            Represents a class for creating triangles
+            </summary>
+        </member>
+        <member name="P:Shapes.Triangle.A">
+            <summary>
+            First side
+            </summary>
+        </member>
+        <member name="P:Shapes.Triangle.B">
+            <summary>
+            Second side
+            </summary>
+        </member>
+        <member name="P:Shapes.Triangle.C">
+            <summary>
+            Third side
+            </summary>
+        </member>
+        <member name="M:Shapes.Triangle.#ctor(System.Double,System.Double,System.Double)">
+            <summary>
+            Creates a triangle on three sides
+            </summary>
+            <param name="a">First side</param>
+            <param name="b">Second side</param>
+            <param name="c">Third side</param>
+            <exception cref="T:Shapes.TriangleException">If the sides do not form a triangle</exception>
+        </member>
+        <member name="M:Shapes.Triangle.IsRectangular">
+            <summary>
+            Checks whether the triangle is rectangular according to the Pythagorean formula: c^2 = a^2 + b^2
+            </summary>
+            <returns>
+            <para><see langword="true"/> - the triangle is rectangular</para>
+            <para><see langword="false"/> - the triangle is not rectangular</para>
+            </returns>
+        </member>
+        <member name="M:Shapes.Triangle.IsExists(System.Double,System.Double,System.Double)">
+            <summary>
+            <para>Checks the existence of a triangle on three sides according to the following conditions:</para>
+            <para>a &lt; b + c</para>
+            <para>b &lt; a + c</para>
+            <para>c &lt; a + b</para>
+            </summary>
+            <param name="a">First side</param>
+            <param name="b">Second side</param>
+            <param name="c">Third side</param>
+            <returns>
+            <para><see langword="true"/> - a triangle with such sides exists</para>
+            <para><see langword="false"/> - a triangle with such sides does not exist</para>
+            </returns>
+        </member>
+        <member name="M:Shapes.Triangle.GetArea">
+            <summary>
+            Calculates the area of a triangle using Heron 's formula: sqrt(p(p - a)(p - b)(p - c))
+            </summary>
+            <returns>
+            The area of the triangle
+            </returns>
+        </member>
+    </members>
+</doc>
