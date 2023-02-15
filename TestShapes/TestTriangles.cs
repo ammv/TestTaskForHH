@@ -14,9 +14,9 @@ namespace TestShapes
         {
             var circle = new Shapes.Triangle(4, 2, 3);
 
-            Assert.AreEqual(circle.A, 4);
-            Assert.AreEqual(circle.B, 2);
-            Assert.AreEqual(circle.C, 3);
+            Assert.AreEqual(circle.SideA, 4);
+            Assert.AreEqual(circle.SideB, 2);
+            Assert.AreEqual(circle.SideC, 3);
 
             Assert.ThrowsException<Shapes.TriangleException>(() => new Shapes.Triangle(3, 1, 2));
             Assert.ThrowsException<Shapes.TriangleException>(() => new Shapes.Triangle(2, 3, 5));

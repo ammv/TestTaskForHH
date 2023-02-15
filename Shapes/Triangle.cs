@@ -21,41 +21,37 @@ namespace Shapes
     /// </summary>
     public class Triangle : Base.Shape
     {
-        private double c;
-        private double a;
-        private double b;
-
         /// <summary>
         /// First side
         /// </summary>
-        public double A { get => a; set => a = value; }
+        public double SideA { get; private set; }
 
         /// <summary>
         /// Second side
         /// </summary>
-        public double B { get => b; set => b = value; }
+        public double SideB { get; private set; }
 
         /// <summary>
         /// Third side
         /// </summary>
-        public double C { get => c; set => c = value; }
+        public double SideC { get; private set; }
 
         /// <summary>
         /// Creates a triangle on three sides
         /// </summary>
-        /// <param name="a">First side</param>
-        /// <param name="b">Second side</param>
-        /// <param name="c">Third side</param>
+        /// <param name="sideA">First side</param>
+        /// <param name="sideB">Second side</param>
+        /// <param name="sideC">Third side</param>
         /// <exception cref="TriangleException">If the sides do not form a triangle</exception>
-        public Triangle(double a, double b, double c)
+        public Triangle(double sideA, double sideB, double sideC)
         {
-            if (!IsExists(a, b, c))
+            if (!IsExists(sideA, sideB, sideC))
             {
                 throw new TriangleException("A triangle with such sides does not exist");
             }
-            A = a;
-            B = b;
-            C = c;
+            SideA = sideA;
+            SideB = sideB;
+            SideC = sideC;
         }
 
         /// <summary>
@@ -67,7 +63,7 @@ namespace Shapes
         /// </returns>
         public bool IsRectangular()
         {
-            return c * c == a * a + b * b;
+            return SideC * SideC == SideA * SideA + SideB * SideB;
         }
 
         /// <summary>
@@ -76,17 +72,17 @@ namespace Shapes
         /// <para>b &lt; a + c</para>
         /// <para>c &lt; a + b</para>
         /// </summary>
-        /// <param name="a">First side</param>
-        /// <param name="b">Second side</param>
-        /// <param name="c">Third side</param>
+        /// <param name="sideA">First side</param>
+        /// <param name="sideB">Second side</param>
+        /// <param name="sideC">Third side</param>
         /// <returns>
         /// <para><see langword="true"/> - a triangle with such sides exists</para>
         /// <para><see langword="false"/> - a triangle with such sides does not exist</para>
         /// </returns>
-        public static bool IsExists(double a, double b, double c)
+        public static bool IsExists(double sideA, double sideB, double sideC)
         {
-            return (a > 0 && b > 0 && c > 0) &&
-                (a < b + c) && (b < a + c) && (c < a + b);
+            return (sideA > 0 && sideB > 0 && sideC > 0) &&
+                (sideA < sideB + sideC) && (sideB < sideA + sideC) && (sideC < sideA + sideB);
         }
 
         /// <summary>
@@ -97,8 +93,8 @@ namespace Shapes
         /// </returns>
         public override double GetArea()
         {
-            double p = (a + b + c) / 2;
-            return Math.Sqrt(p * (p - a) * (p - b) * (p - c));
+            double p = (SideA + SideB + SideC) / 2;
+            return Math.Sqrt(p * (p - SideA) * (p - SideB) * (p - SideC));
         }
     }
 }
