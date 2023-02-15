@@ -28,7 +28,18 @@ namespace Shapes
         /// <summary>
         /// Circle radius
         /// </summary>
-        public double Radius { get => radius; set => radius = value; }
+        public double Radius
+        {
+            get => radius;
+            set
+            {
+                if (value <= 0)
+                {
+                    throw new CircleException($"A circle with a radius = {radius} equal to 0 or less does not exist");
+                }
+                radius = value;
+            }
+        }
 
         /// <summary>
         /// Creates a circle through the radius
@@ -41,7 +52,7 @@ namespace Shapes
             {
                 throw new CircleException($"A circle with a radius = {radius} equal to 0 or less does not exist");
             }
-            Radius = radius;
+            this.radius = radius;
         }
 
         /// <summary>
