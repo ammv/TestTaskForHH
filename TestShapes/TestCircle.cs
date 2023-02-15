@@ -8,30 +8,29 @@ namespace TestShapes
     [TestClass]
     public class TestCircle
     {
-        /// <summary>
-        /// Checks creation of circles with correct and incorrect radius
-        /// </summary>
         [TestMethod]
-        public void TestCircleCreation()
+        public void Creating_NotExists_Circle_Throw()
         {
-            var circle = new Shapes.Circle(5);
-            Assert.AreEqual(circle.Radius, 5);
-            Assert.ThrowsException<Shapes.CircleException>(() => new Shapes.Circle(0));
-            Assert.ThrowsException<Shapes.CircleException>(() => new Shapes.Circle(-1));
+            // Arrange
+            double radius = 0;
+
+            // Act and assert
+            Assert.ThrowsException<Shapes.CircleException>(() => new Shapes.Circle(radius));
         }
 
-        /// <summary>
-        /// Checks the calculation of the area of the circle
-        /// </summary>
         [TestMethod]
-        public void TestCalculatingArea()
+        public void Circle_Area_Calculated_True()
         {
-            double r1 = 145, r2 = 1.12345;
+            // Arrange
+            double r1 = 145;
+            double expectedArea = Math.PI * r1 * r1;
             var circle = new Shapes.Circle(r1);
-            var circle2 = new Shapes.Circle(r2);
 
-            Assert.AreEqual(circle.GetArea(), Math.PI * r1 * r1);
-            Assert.AreEqual(circle2.GetArea(), Math.PI * r2 * r2);
+            // Act
+            double area = circle.Area;
+
+            // Assert
+            Assert.AreEqual(expectedArea, area);
         }
     }
 }

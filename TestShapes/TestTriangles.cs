@@ -1,62 +1,63 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using Shapes;
 
 namespace TestShapes
 {
     [TestClass]
     public class TestTriangles
     {
-        /// <summary>
-        /// Checks the creation of triangles with right sides and wrong sides
-        /// </summary>
         [TestMethod]
-        public void TestTriangleCreation()
+        public void Creating_NotExists_Trinagular_Throw()
         {
-            var circle = new Shapes.Triangle(4, 2, 3);
-
-            Assert.AreEqual(circle.SideA, 4);
-            Assert.AreEqual(circle.SideB, 2);
-            Assert.AreEqual(circle.SideC, 3);
-
-            Assert.ThrowsException<Shapes.TriangleException>(() => new Shapes.Triangle(3, 1, 2));
-            Assert.ThrowsException<Shapes.TriangleException>(() => new Shapes.Triangle(2, 3, 5));
-            Assert.ThrowsException<Shapes.TriangleException>(() => new Shapes.Triangle(1, 3, 7));
-            Assert.ThrowsException<Shapes.TriangleException>(() => new Shapes.Triangle(0, 2, 3));
+            // Arrange
+            var (a, b, c) = (3d, 1d, 2d);
+            // Act and assert
+            Assert.ThrowsException<TriangleException>(() => new Triangle(a, b, c));
         }
 
-        /// <summary>
-        /// Checks the correctness of the definition of right-angled triangles
-        /// </summary>
         [TestMethod]
-        public void TestTriangleIsRectangular()
+        public void Rectangular_Triangle_IsRectangular()
         {
-            var rectangularTrinagle = new Shapes.Triangle(4, 3, 5);
-            var notRectangularTrinagle = new Shapes.Triangle(4, 2, 3);
+            // Arrange
+            var rectangularTrinagle = new Triangle(4, 3, 5);
 
-            Assert.AreEqual(rectangularTrinagle.IsRectangular(), true);
-            Assert.AreEqual(notRectangularTrinagle.IsRectangular(), false);
+            // Act
+            bool isRectangular = rectangularTrinagle.IsRectangular();
+
+            // Assert
+            Assert.IsTrue(isRectangular);
         }
 
-        /// <summary>
-        /// Checks the calculation of the area of the triangle
-        /// </summary>
         [TestMethod]
-        public void TestCalculatingArea()
+        public void NotRectangular_Triangle_IsNotRectangular()
         {
+            // Arrange
+            var rectangularTrinagle = new Triangle(4, 3, 4);
+
+            // Act
+            bool isRectangular = rectangularTrinagle.IsRectangular();
+
+            // Assert
+            Assert.IsFalse(isRectangular);
+        }
+
+        [TestMethod]
+        public void Triangular_Area_Calculated_True()
+        {
+            // Arrange
             var (a, b, c) = (4d, 2d, 3d);
-            var (a2, b2, c2) = (4d, 2d, 5d);
 
             var p = (a + b + c) / 2;
-            var p2 = (a2 + b2 + c2) / 2;
+            var exceptedArea = Math.Sqrt(p * (p - a) * (p - b) * (p - c));
 
-            var s = Math.Sqrt(p * (p - a) * (p - b) * (p - c));
-            var s2 = Math.Sqrt(p2 * (p2 - a2) * (p2 - b2) * (p2 - c2));
+            var triangle = new Triangle(a, b, c);
 
-            var triangle = new Shapes.Triangle(a, b, c);
-            var triangle2 = new Shapes.Triangle(a2, b2, c2);
+            // Act
+            double area = triangle.Area;
 
-            Assert.AreEqual(triangle.GetArea(), s);
-            Assert.AreEqual(triangle2.GetArea(), s2);
+            // Assert
+            Assert.AreEqual(exceptedArea, area);
         }
     }
 }

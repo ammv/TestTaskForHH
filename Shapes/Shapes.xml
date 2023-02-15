@@ -9,11 +9,10 @@
             Represents the base class for shapes
             </summary>
         </member>
-        <member name="M:Shapes.Base.Shape.GetArea">
+        <member name="P:Shapes.Base.Shape.Area">
             <summary>
-            Calculates the area of the shape
+            The area of the shape
             </summary>
-            <returns>The area of the shape</returns>
         </member>
         <member name="T:Shapes.CircleException">
             <summary>
@@ -43,12 +42,6 @@
             <param name="radius">Circle radius</param>
             /// <exception cref="T:Shapes.CircleException">The radius is less than or equal to 0</exception>
         </member>
-        <member name="M:Shapes.Circle.GetArea">
-            <summary>
-            Calculates the area of a circle through its radius using the formula: pi*r^2
-            </summary>
-            <returns>The area of the circle</returns>
-        </member>
         <member name="T:Shapes.TriangleException">
             <summary>
             Class for exceptions related to the <see cref="T:Shapes.Triangle"/> class
@@ -65,17 +58,17 @@
             Represents a class for creating triangles
             </summary>
         </member>
-        <member name="P:Shapes.Triangle.A">
+        <member name="P:Shapes.Triangle.SideA">
             <summary>
             First side
             </summary>
         </member>
-        <member name="P:Shapes.Triangle.B">
+        <member name="P:Shapes.Triangle.SideB">
             <summary>
             Second side
             </summary>
         </member>
-        <member name="P:Shapes.Triangle.C">
+        <member name="P:Shapes.Triangle.SideC">
             <summary>
             Third side
             </summary>
@@ -84,9 +77,9 @@
             <summary>
             Creates a triangle on three sides
             </summary>
-            <param name="a">First side</param>
-            <param name="b">Second side</param>
-            <param name="c">Third side</param>
+            <param name="sideA">First side</param>
+            <param name="sideB">Second side</param>
+            <param name="sideC">Third side</param>
             <exception cref="T:Shapes.TriangleException">If the sides do not form a triangle</exception>
         </member>
         <member name="M:Shapes.Triangle.IsRectangular">
@@ -105,20 +98,12 @@
             <para>b &lt; a + c</para>
             <para>c &lt; a + b</para>
             </summary>
-            <param name="a">First side</param>
-            <param name="b">Second side</param>
-            <param name="c">Third side</param>
+            <param name="sideA">First side</param>
+            <param name="sideB">Second side</param>
+            <param name="sideC">Third side</param>
             <returns>
             <para><see langword="true"/> - a triangle with such sides exists</para>
             <para><see langword="false"/> - a triangle with such sides does not exist</para>
-            </returns>
-        </member>
-        <member name="M:Shapes.Triangle.GetArea">
-            <summary>
-            Calculates the area of a triangle using Heron 's formula: sqrt(p(p - a)(p - b)(p - c))
-            </summary>
-            <returns>
-            The area of the triangle
             </returns>
         </member>
     </members>

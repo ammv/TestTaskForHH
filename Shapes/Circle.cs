@@ -23,23 +23,10 @@ namespace Shapes
     /// </summary>
     public class Circle : Base.Shape
     {
-        private double radius;
-
         /// <summary>
         /// Circle radius
         /// </summary>
-        public double Radius
-        {
-            get => radius;
-            set
-            {
-                if (value <= 0)
-                {
-                    throw new CircleException($"A circle with a radius = {radius} equal to 0 or less does not exist");
-                }
-                radius = value;
-            }
-        }
+        public double Radius { get; private set; }
 
         /// <summary>
         /// Creates a circle through the radius
@@ -52,16 +39,8 @@ namespace Shapes
             {
                 throw new CircleException($"A circle with a radius = {radius} equal to 0 or less does not exist");
             }
-            this.radius = radius;
-        }
-
-        /// <summary>
-        /// Calculates the area of a circle through its radius using the formula: pi*r^2
-        /// </summary>
-        /// <returns>The area of the circle</returns>
-        public override double GetArea()
-        {
-            return Math.PI * radius * radius;
+            Radius = radius;
+            Area = Math.PI * radius * radius;
         }
     }
 }

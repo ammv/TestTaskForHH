@@ -52,6 +52,9 @@ namespace Shapes
             SideA = sideA;
             SideB = sideB;
             SideC = sideC;
+
+            double p = (SideA + SideB + SideC) / 2;
+            Area = Math.Sqrt(p * (p - SideA) * (p - SideB) * (p - SideC));
         }
 
         /// <summary>
@@ -83,18 +86,6 @@ namespace Shapes
         {
             return (sideA > 0 && sideB > 0 && sideC > 0) &&
                 (sideA < sideB + sideC) && (sideB < sideA + sideC) && (sideC < sideA + sideB);
-        }
-
-        /// <summary>
-        /// Calculates the area of a triangle using Heron 's formula: sqrt(p(p - a)(p - b)(p - c))
-        /// </summary>
-        /// <returns>
-        /// The area of the triangle
-        /// </returns>
-        public override double GetArea()
-        {
-            double p = (SideA + SideB + SideC) / 2;
-            return Math.Sqrt(p * (p - SideA) * (p - SideB) * (p - SideC));
         }
     }
 }
