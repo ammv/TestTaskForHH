@@ -71,6 +71,7 @@ namespace Shapes
 
         /// <summary>
         /// <para>Checks the existence of a triangle on three sides according to the following conditions:</para>
+        /// <para>a > 0 and b > 0 and c > 0</para>
         /// <para>a &lt; b + c</para>
         /// <para>b &lt; a + c</para>
         /// <para>c &lt; a + b</para>
@@ -85,7 +86,9 @@ namespace Shapes
         public static bool IsExists(double sideA, double sideB, double sideC)
         {
             return (sideA > 0 && sideB > 0 && sideC > 0) &&
-                (sideA < sideB + sideC) && (sideB < sideA + sideC) && (sideC < sideA + sideB);
+                (sideA < sideB + sideC) &&
+                (sideB < sideA + sideC) &&
+                (sideC < sideA + sideB);
         }
     }
 }
